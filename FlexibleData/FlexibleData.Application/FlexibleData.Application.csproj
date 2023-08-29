@@ -6,4 +6,8 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\FlexibleData.Domain\FlexibleData.Domain.csproj" />
+  </ItemGroup>
+
 </Project>
