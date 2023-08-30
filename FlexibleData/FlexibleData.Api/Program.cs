@@ -1,14 +1,15 @@
-using FlexibleData.Persistence;
 using FlexibleData.Application;
-using Microsoft.EntityFrameworkCore;
+using FlexibleData.Application.Features.FlexibleData.Commands.CreateFlexibleData;
+using FlexibleData.Application.Features.FlexibleData.Queries.GetFlexibleData;
+using FlexibleData.Persistence;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
-using FlexibleData.Application.Features.FlexibleData.Commands.CreateFlexibleData;
+using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-builder.Services.AddDbContext<FlexibleDataContext>(options=>
+builder.Services.AddDbContext<FlexibleDataContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("FlexibleDataConnectionString")));
 
 //register application services
@@ -48,6 +49,31 @@ app.MapPost("/flexibledata/create", async ([FromBody] CreateFlexibleDataCommand 
     return Results.Ok(result);
 })
 .WithName("CreateFlexibleData")
+.WithOpenApi();
+
+app.MapGet("/flexibledata/get/{id?}", async (Guid? id, [FromServices] IMediator mediator) =>
+{
+    //send the data for processing
+    var result = await mediator.Send(new GetFlexibleDataQuery { Id = id });
+
+    if (id.HasValue)
+    {
+        if (result is null || !result.Any())
+        {
+            //no flexible data found for the id provided
+            return Results.NotFound();
+        }
+
+        //flexible data found for the id
+        return Results.Ok(result.First());
+    }
+    else
+    {
+        //id was not provided. hence return all the data returned from  he database
+        return Results.Ok(result);
+    }
+})
+.WithName("GetFlexibleData")
 .WithOpenApi();
 
 app.Run();

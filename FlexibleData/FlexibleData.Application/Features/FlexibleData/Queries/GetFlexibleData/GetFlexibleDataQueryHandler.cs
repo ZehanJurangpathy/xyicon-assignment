@@ -1,4 +1,5 @@
 ﻿using FlexibleData.Application.Contracts.Persistence;
+using FlexibleData.Application.Extensions;
 using MediatR;
 using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
@@ -30,12 +31,12 @@ namespace FlexibleData.Application.Features.FlexibleData.Queries.GetFlexibleData
             if (request.Id is null)
             {
                 //no id is passed. get all flexible objects
-                flexibleDataList.AddRange(await _flexibleDataRepository.GetAsync());
+                flexibleDataList.AddIfNotNull(await _flexibleDataRepository.GetAsync());
             }
             else
             {
                 //id passed
-                flexibleDataList.Add(await _flexibleDataRepository.GetByIdAsync(request.Id));
+                flexibleDataList.AddIfNotNull(await _flexibleDataRepository.GetByIdAsync(request.Id));
             }
 
             _logger.LogInformation("Flexible Data count retrieved from database: {count}", flexibleDataList.Count());
