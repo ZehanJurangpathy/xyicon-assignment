@@ -1,6 +1,8 @@
 ﻿using AutoMapper;
+using FlexibleData.Application.BackgroundJobs;
 using FlexibleData.Application.Contracts.Persistence;
 using FlexibleData.Application.Exceptions;
+using Hangfire;
 using MediatR;
 using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
@@ -58,8 +60,8 @@ namespace FlexibleData.Application.Features.FlexibleData.Commands.CreateFlexible
             //save the details to the database
             await _flexibleDataRepository.CreateAsync(dataToSave);
 
-
             //TODO: start the asynchronous process
+            BackgroundJob.Enqueue<StatisticsProcessor>(x => x.Process(request.Data));
 
             return _mapper.Map<CreateFlexibleDataCommandVm>(dataToSave);
         }
