@@ -13,5 +13,10 @@ namespace FlexibleData.Persistence
             new FlexibleDataEntityTypeConfiguration()
                 .Configure(modelBuilder.Entity<Domain.Entities.FlexibleData>());
         }
+
+        public FlexibleDataContext(DbContextOptions options): base(options)
+        {
+            
+        }
     }
 }
