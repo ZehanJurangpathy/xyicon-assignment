@@ -10,4 +10,8 @@
     <ProjectReference Include="..\FlexibleData.Domain\FlexibleData.Domain.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Features\" />
+  </ItemGroup>
+
 </Project>

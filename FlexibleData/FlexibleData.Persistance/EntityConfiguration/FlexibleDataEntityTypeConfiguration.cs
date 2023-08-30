@@ -1,7 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
-namespace FlexibleData.Persistance.EntityConfiguration
+namespace FlexibleData.Persistence.EntityConfiguration
 {
     public class FlexibleDataEntityTypeConfiguration : IEntityTypeConfiguration<Domain.Entities.FlexibleData>
     {

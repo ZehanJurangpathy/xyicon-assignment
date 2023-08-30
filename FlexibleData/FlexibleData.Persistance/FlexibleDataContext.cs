@@ -1,7 +1,7 @@
-﻿using FlexibleData.Persistance.EntityConfiguration;
+﻿using FlexibleData.Persistence.EntityConfiguration;
 using Microsoft.EntityFrameworkCore;
 
-namespace FlexibleData.Persistance
+namespace FlexibleData.Persistence
 {
     public class FlexibleDataContext : DbContext
     {
