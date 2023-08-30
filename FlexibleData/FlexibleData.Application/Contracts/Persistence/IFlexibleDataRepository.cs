@@ -1,12 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace FlexibleData.Application.Contracts.Persistence
+﻿namespace FlexibleData.Application.Contracts.Persistence
 {
-    public interface IFlexibleDataRepository
+    public interface IFlexibleDataRepository : IRepository<Domain.Entities.FlexibleData>
     {
+        Task CreateAsync(Domain.Entities.FlexibleData flexibleData);
     }
 }
