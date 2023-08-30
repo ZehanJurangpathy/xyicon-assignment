@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using FlexibleData.Application.Contracts.Persistence;
+using FlexibleData.Application.Exceptions;
 using MediatR;
 using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
@@ -37,6 +38,16 @@ namespace FlexibleData.Application.Features.FlexibleData.Commands.CreateFlexible
         public async Task<CreateFlexibleDataCommandVm> Handle(CreateFlexibleDataCommand request, CancellationToken cancellationToken)
         {
             _logger.LogInformation("Received flexible data to save: {data}", JsonConvert.SerializeObject(request.Data));
+
+            //validate the request
+            var validator = new CreateFlexibleDataCommandValidator();
+            var validationResult = validator.Validate(request);
+
+            _logger.LogInformation("Validation errors count: {count}", validationResult.Errors.Count);
+            if (validationResult.Errors.Count > 0)
+            {
+                throw new ValidationException(validationResult);
+            }
 
             var dataToSave = new Domain.Entities.FlexibleData
             {
