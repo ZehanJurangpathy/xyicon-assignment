@@ -8,5 +8,8 @@ namespace FlexibleData.Application.Features.FlexibleData.Commands.CreateFlexible
 {
     public class CreateFlexibleDataCommandVm
     {
+        public Guid Id { get; set; }
+
+        public string Data { get; set; }
     }
 }

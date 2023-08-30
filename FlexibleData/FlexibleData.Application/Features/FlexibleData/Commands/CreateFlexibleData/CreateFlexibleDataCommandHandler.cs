@@ -40,12 +40,15 @@ namespace FlexibleData.Application.Features.FlexibleData.Commands.CreateFlexible
 
             var dataToSave = new Domain.Entities.FlexibleData
             {
-                Id = new Guid(),
+                Id = Guid.NewGuid(),
                 Data = JsonConvert.SerializeObject(request.Data)
             };
 
             //save the details to the database
             await _flexibleDataRepository.CreateAsync(dataToSave);
+
+
+            //TODO: start the asynchronous process
 
             return _mapper.Map<CreateFlexibleDataCommandVm>(dataToSave);
         }
