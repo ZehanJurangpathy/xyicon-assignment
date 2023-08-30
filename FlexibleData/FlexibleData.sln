@@ -23,6 +23,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FlexibleData.Application.Un
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FlexibleData.Infrastructure.IntegrationTests", "FlexibleData.Infrastructure.IntegrationTests\FlexibleData.Infrastructure.IntegrationTests.csproj", "{FEA6979E-2AF0-4822-9D1E-ABF3BB3095C5}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FlexibleData.Api", "FlexibleData.Api\FlexibleData.Api.csproj", "{6952170E-5EC2-44B5-AE73-B941F0596CC4}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -49,6 +51,10 @@ Global
 		{FEA6979E-2AF0-4822-9D1E-ABF3BB3095C5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FEA6979E-2AF0-4822-9D1E-ABF3BB3095C5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FEA6979E-2AF0-4822-9D1E-ABF3BB3095C5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6952170E-5EC2-44B5-AE73-B941F0596CC4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6952170E-5EC2-44B5-AE73-B941F0596CC4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6952170E-5EC2-44B5-AE73-B941F0596CC4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6952170E-5EC2-44B5-AE73-B941F0596CC4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -62,6 +68,7 @@ Global
 		{CF0B15EA-2AFB-4C4A-BC88-5862DA5891EA} = {358FDAA7-70C7-4B1E-B1EA-E9B91D1BD920}
 		{8678AE30-ABCA-4F8C-9ADE-4BB1878E10ED} = {10A399CC-0EC7-49DD-9A52-EC2505713C15}
 		{FEA6979E-2AF0-4822-9D1E-ABF3BB3095C5} = {10A399CC-0EC7-49DD-9A52-EC2505713C15}
+		{6952170E-5EC2-44B5-AE73-B941F0596CC4} = {F2320D87-1FC9-4649-9072-431D025E4AF7}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {9BEBE294-0EEA-452A-A21B-331B750BDCF3}
