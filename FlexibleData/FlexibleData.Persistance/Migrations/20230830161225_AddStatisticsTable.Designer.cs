@@ -4,6 +4,7 @@ using FlexibleData.Persistence;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace FlexibleData.Persistence.Migrations
 {
     [DbContext(typeof(FlexibleDataContext))]
-    partial class FlexibleDataContextModelSnapshot : ModelSnapshot
+    [Migration("20230830161225_AddStatisticsTable")]
+    partial class AddStatisticsTable
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
