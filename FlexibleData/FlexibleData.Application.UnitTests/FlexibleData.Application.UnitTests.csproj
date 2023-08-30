@@ -28,8 +28,4 @@
     <ProjectReference Include="..\FlexibleData.Application\FlexibleData.Application.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="FlexibleData\Queries\" />
-  </ItemGroup>
-
 </Project>
