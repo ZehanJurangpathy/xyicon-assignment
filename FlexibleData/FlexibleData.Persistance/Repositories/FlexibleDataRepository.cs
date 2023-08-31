@@ -4,10 +4,6 @@ namespace FlexibleData.Persistence.Repositories
 {
     public class FlexibleDataRepository : Repository<Domain.Entities.FlexibleData>, IFlexibleDataRepository
     {
-        #region Fields
-        private readonly FlexibleDataContext _context;
-        #endregion
-
         #region Constructor
         /// <summary>Initializes a new instance of the <see cref="FlexibleDataRepository" /> class.</summary>
         /// <param name="context">The context.</param>

@@ -13,7 +13,7 @@ builder.Services.AddDbContext<FlexibleDataContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("FlexibleDataConnectionString")));
 
 //register application services
-builder.Services.AddApplicationServices();
+builder.Services.AddApplicationServices(builder.Configuration.GetConnectionString("FlexibleDataConnectionString"));
 //register persistence services
 builder.Services.AddPersistenceServices();
 

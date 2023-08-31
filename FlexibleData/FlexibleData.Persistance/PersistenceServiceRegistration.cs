@@ -11,6 +11,7 @@ namespace FlexibleData.Persistence
             //register repositories
             services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
             services.AddScoped<IFlexibleDataRepository, FlexibleDataRepository>();
+            services.AddScoped<IStatisticsRepository, StatisticsRepository>();
 
             return services;
         }

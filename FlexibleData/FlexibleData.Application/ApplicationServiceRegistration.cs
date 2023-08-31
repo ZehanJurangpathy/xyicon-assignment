@@ -1,11 +1,12 @@
-﻿using Microsoft.Extensions.DependencyInjection;
+﻿using Hangfire;
+using Microsoft.Extensions.DependencyInjection;
 using System.Reflection;
 
 namespace FlexibleData.Application
 {
     public static class ApplicationServiceRegistration
     {
-        public static IServiceCollection AddApplicationServices(this IServiceCollection services)
+        public static IServiceCollection AddApplicationServices(this IServiceCollection services, string connecitonString)
         {
             //register MediatR library
             services.AddMediatR(cfg =>
@@ -13,6 +14,14 @@ namespace FlexibleData.Application
 
             //register auto mapper
             services.AddAutoMapper(Assembly.GetExecutingAssembly());
+
+            services.AddHangfire(cfg => cfg
+                .SetDataCompatibilityLevel(CompatibilityLevel.Version_180)
+                .UseSimpleAssemblyNameTypeSerializer()
+                .UseRecommendedSerializerSettings()
+                .UseSqlServerStorage(connecitonString));
+
+            services.AddHangfireServer();
 
             return services;
         }
