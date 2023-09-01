@@ -1,6 +1,7 @@
 using FlexibleData.Application;
 using FlexibleData.Application.Features.FlexibleData.Commands.CreateFlexibleData;
 using FlexibleData.Application.Features.FlexibleData.Queries.GetFlexibleData;
+using FlexibleData.Application.Features.FlexibleData.Queries.GetKeyCount;
 using FlexibleData.Persistence;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
@@ -74,6 +75,31 @@ app.MapGet("/flexibledata/get/{id?}", async (Guid? id, [FromServices] IMediator 
     }
 })
 .WithName("GetFlexibleData")
+.WithOpenApi();
+
+app.MapGet("/flexibledata/count/{key?}", async (string? key, [FromServices] IMediator mediator) =>
+{
+    //send the data for processing
+    var result = await mediator.Send(new GetKeyCountQuery { Key = key });
+
+    if (key is not null)
+    {
+        if (result is null || !result.Any())
+        {
+            //no statistics found for the key provided
+            return Results.NotFound();
+        }
+
+        //statistics data found for the key
+        return Results.Ok(result.First());
+    }
+    else
+    {
+        //key was not provided. hence return all the data returned from  he database
+        return Results.Ok(result);
+    }
+})
+.WithName("GetKeyCount")
 .WithOpenApi();
 
 app.Run();
