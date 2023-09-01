@@ -14,5 +14,10 @@ namespace FlexibleData.Application.UnitTests
         {
             return new Mock<IFlexibleDataRepository>();
         }
+
+        public static Mock<IStatisticsRepository> GetStatisticsRepository()
+        {
+            return new Mock<IStatisticsRepository>();
+        }
     }
 }
