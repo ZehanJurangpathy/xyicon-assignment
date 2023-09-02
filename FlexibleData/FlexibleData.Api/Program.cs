@@ -9,8 +9,15 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
 using Polly;
+using Serilog;
 
 var builder = WebApplication.CreateBuilder(args);
+
+// Use Serilog
+builder.Host.UseSerilog((hostContext, services, configuration) => {
+    configuration
+        .WriteTo.Console();
+});
 
 // Add services to the container.
 builder.Services.AddDbContext<FlexibleDataContext>(options =>
