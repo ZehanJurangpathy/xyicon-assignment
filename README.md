@@ -38,3 +38,18 @@ Completed implementing the coding challenge provided by Xyicon. Below are the fe
 7. The API will be available via http://localhost:8080 URL
 
 #### Note: Postman collection is also available in the repository
+
+### Data set used for create method
+I assumed that assets in a building will be stored as key value pairs via the API. Below is a sample data set used in the POST API method.
+
+```
+{
+    "data": {
+        "Telephone": "TP1234516",
+        "Chair": "CHR12345",
+        "Desk": "DSK2123"
+    }
+}
+```
+
+The keys which in this case are "Telephone", "Chair" and "Desk". The values are the asset tracking numbers.
