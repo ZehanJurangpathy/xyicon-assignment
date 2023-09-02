@@ -1,5 +1,7 @@
 ﻿using AutoMapper;
 using FlexibleData.Application.Profiles;
+using Hangfire;
+using Hangfire.MemoryStorage;
 
 namespace FlexibleData.Application.UnitTests
 {
@@ -20,6 +22,9 @@ namespace FlexibleData.Application.UnitTests
             });
 
             _mapper = configurationProvider.CreateMapper();
+
+            // Use in-memory storage for testing
+            GlobalConfiguration.Configuration.UseMemoryStorage(); 
         }
         #endregion
     }
