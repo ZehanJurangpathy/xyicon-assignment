@@ -12,6 +12,7 @@ Completed implementing the coding challenge provided by Xyicon. Below are the fe
 -   Xunit
 -   Moq
 -   Shouldly
+-   Serilog
 
 ### Requirements Implemented:
 | **Requirement**                           | **Completion Status** |
