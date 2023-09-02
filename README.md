@@ -13,7 +13,7 @@ Completed implementing the coding challenge provided by Xyicon. Below are the fe
 -   Moq
 -   Shouldly
 
-Requirements Implemented:
+### Requirements Implemented:
 | **Requirement**                           | **Completion Status** |
 |-------------------------------------------|-----------------------|
 | Create endpoint POST /flexibledata/create | 100%                  |
@@ -24,4 +24,17 @@ Requirements Implemented:
 | In case of an error, all end-points should return a 400 Bad Request response | 100% |
 | Dockerize the application | 100% |
 
+### Steps on running the application:
 
+#### Pre-requisite: Docker Desktop needs to be installed.
+1. Clone the repository
+2. Open the cloned folder using File Explorer and navigate to /FlexibleData folder
+3. The docker-compose.yml file is located in this folder
+4. Launch a command prompt from the current directory
+5. Run the following commands in the command prompt in-order
+   - docker-compose build
+   - docker-compose up
+6. Above commands will create the API image and the containers for hosting the API and SQL Server in docker
+7. The API will be available via http://localhost:8080 URL
+
+#### Note: Postman collection is also available in the repository
