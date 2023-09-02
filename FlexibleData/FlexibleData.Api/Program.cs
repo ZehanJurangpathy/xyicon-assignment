@@ -67,8 +67,7 @@ retryPolicy.Execute(() =>
     }
     catch (SqlException ex)
     {
-        // Log or handle the exception
-        
+        app.Logger.LogError(ex.Message);
     }
 });
 
