@@ -1,0 +1,27 @@
+﻿version: "3.4"
+
+services:
+    db:
+        container_name: sqlserver2022
+        image: "mcr.microsoft.com/mssql/server:2022-latest"
+        ports:
+          - "1433:1433"
+
+        environment:
+            SA_PASSWORD: "S3cur3P@ssW0rd!"
+            ACCEPT_EULA: "Y"
+        healthcheck:
+            test: /opt/mssql-tools/bin/sqlcmd -S localhost -U SA -P S3cur3P@ssW0rd! -Q "Select 1"
+            interval: 5s
+            retries: 10
+    api:
+        container_name: flexible-data-api
+        image: ${DOCKER_REGISTRY-}flexibledataapi
+        build:
+         context: .
+         dockerfile: FlexibleData.Api/Dockerfile
+        ports:
+          - "8080:80"
+        depends_on:
+           db:
+            condition: service_healthy

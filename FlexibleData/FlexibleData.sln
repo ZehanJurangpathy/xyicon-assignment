@@ -21,9 +21,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FlexibleData.Persistence", 
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FlexibleData.Application.UnitTests", "FlexibleData.Application.UnitTests\FlexibleData.Application.UnitTests.csproj", "{8678AE30-ABCA-4F8C-9ADE-4BB1878E10ED}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FlexibleData.Infrastructure.IntegrationTests", "FlexibleData.Infrastructure.IntegrationTests\FlexibleData.Infrastructure.IntegrationTests.csproj", "{FEA6979E-2AF0-4822-9D1E-ABF3BB3095C5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FlexibleData.Infrastructure.IntegrationTests", "FlexibleData.Infrastructure.IntegrationTests\FlexibleData.Infrastructure.IntegrationTests.csproj", "{FEA6979E-2AF0-4822-9D1E-ABF3BB3095C5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FlexibleData.Api", "FlexibleData.Api\FlexibleData.Api.csproj", "{6952170E-5EC2-44B5-AE73-B941F0596CC4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FlexibleData.Api", "FlexibleData.Api\FlexibleData.Api.csproj", "{6952170E-5EC2-44B5-AE73-B941F0596CC4}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -6,13 +6,16 @@ using FlexibleData.Application.Features.FlexibleData.Queries.GetKeyCount;
 using FlexibleData.Persistence;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
+using Polly;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddDbContext<FlexibleDataContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("FlexibleDataConnectionString")));
+builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 
 //register application services
 builder.Services.AddApplicationServices(builder.Configuration.GetConnectionString("FlexibleDataConnectionString"));
@@ -32,13 +35,37 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
-//run the migrations
-using (var scope = app.Services.CreateScope())
+var retryPolicy = Policy
+    .Handle<SqlException>()
+    .WaitAndRetry(new[]
+    {
+        TimeSpan.FromSeconds(10),
+        TimeSpan.FromSeconds(15),
+        TimeSpan.FromSeconds(20)
+    });
+
+retryPolicy.Execute(() =>
 {
-    var services = scope.ServiceProvider;
-    var context = services.GetRequiredService<FlexibleDataContext>();
-    context.Database.Migrate();
-}
+    try
+    {
+        //run the migrations
+        using (var scope = app.Services.CreateScope())
+        {
+            var services = scope.ServiceProvider;
+            var context = services.GetRequiredService<FlexibleDataContext>();
+
+            context.Database.EnsureCreated();
+            context.Database.Migrate();
+        }
+    }
+    catch (SqlException ex)
+    {
+        // Log or handle the exception
+        
+    }
+});
+
+
 
 app.UseHttpsRedirection();
 //register custom exception handler
