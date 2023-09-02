@@ -1,0 +1,90 @@
+{
+	"info": {
+		"_postman_id": "72c6262d-7ce6-486d-a39f-1d999057f8bc",
+		"name": "Xyicon-Assignment",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "29460273"
+	},
+	"item": [
+		{
+			"name": "Create Flexible Data",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"data\": {\r\n        \"Telephone\": \"TP1234516\",\r\n        \"Chair\": \"CHR12345\",\r\n        \"Desk\": \"DSK2123\"\r\n    }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/flexibledata/create",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"flexibledata",
+						"create"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Flexible Data",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/flexibledata/get",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"flexibledata",
+						"get"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Key Count",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/flexibledata/count",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"flexibledata",
+						"count"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
