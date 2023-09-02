@@ -1,3 +1,4 @@
+using FlexibleData.Api.Middleware;
 using FlexibleData.Application;
 using FlexibleData.Application.Features.FlexibleData.Commands.CreateFlexibleData;
 using FlexibleData.Application.Features.FlexibleData.Queries.GetFlexibleData;
@@ -40,6 +41,8 @@ using (var scope = app.Services.CreateScope())
 }
 
 app.UseHttpsRedirection();
+//register custom exception handler
+app.UseCustomExceptionHandler();
 
 //api endpoints
 app.MapPost("/flexibledata/create", async ([FromBody] CreateFlexibleDataCommand flexibleData, [FromServices] IMediator mediator) =>
