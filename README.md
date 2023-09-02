@@ -36,6 +36,7 @@ Completed implementing the coding challenge provided by Xyicon. Below are the fe
    - docker-compose up
 6. Above commands will create the API image and the containers for hosting the API and SQL Server in docker
 7. The API will be available via http://localhost:8080 URL
+8. Import the Postman collection and run the requests to create and get results
 
 #### Note: Postman collection is also available in the repository
 
